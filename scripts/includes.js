@@ -1,4 +1,4 @@
-// Người phụ trách: Duy. Các việc cần làm: Viết logic JS, xử lý sự kiện, tối ưu hiệu năng */
+// Người phụ trách: Bình. Các việc cần làm: Viết logic JS, xử lý sự kiện, tối ưu hiệu năng */
 const includeTargets = Array.from(document.querySelectorAll("[data-include]"));
 
 async function loadPartial(target) {
