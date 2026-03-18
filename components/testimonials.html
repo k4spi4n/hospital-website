@@ -7,129 +7,255 @@
       ngũ CMEC Hospital.
     </p>
 
-
     <style>
       .testimonial-carousel {
         overflow: hidden;
         position: relative;
         width: 100%;
-        padding: 20px 0;
+        padding: 30px 0 20px;
+        margin: 0 -15px;
+        width: calc(100% + 30px);
+        left: 50%;
+        transform: translateX(-50%);
       }
+      
       .testimonial-track {
         display: flex;
         width: max-content;
-        gap: 20px;
-        animation: marquee 40s linear infinite;
+        gap: 24px;
+        animation: marquee 45s linear infinite;
+        padding: 10px 15px;
       }
+      
       .testimonial-carousel:hover .testimonial-track {
         animation-play-state: paused;
       }
+      
       .testimonial-carousel .testimonial-card {
-        width: 350px;
+        width: 360px;
         flex-shrink: 0;
         white-space: normal;
+        transition: all 0.3s ease;
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.03);
       }
-      @media (max-width: 768px) {
+      
+      .testimonial-carousel .testimonial-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 66, 133, 0.12);
+        border-color: rgba(0, 66, 133, 0.1);
+      }
+        
+      .carousel-nav-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: white;
+        border: 1px solid rgba(0, 66, 133, 0.2);
+        color: #004285;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .carousel-nav-btn:hover {
+        background: #004285;
+        color: white;
+        border-color: #004285;
+        transform: scale(1.05);
+      }
+      
+      @media (max-width: 992px) {
         .testimonial-carousel .testimonial-card {
-          width: 300px;
+          width: 340px;
+          padding: 20px;
         }
       }
+      
+      @media (max-width: 768px) {
+        .testimonial-carousel {
+          padding: 20px 0;
+        }
+        
+        .testimonial-carousel .testimonial-card {
+          width: 300px;
+          padding: 18px;
+        }
+        
+        .testimonial-track {
+          gap: 18px;
+          animation-duration: 35s;
+        }
+        
+        .carousel-nav-btn {
+          width: 42px;
+          height: 42px;
+          font-size: 20px;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .testimonial-carousel .testimonial-card {
+          width: 280px;
+        }
+        
+        .testimonial-track {
+          gap: 15px;
+          animation-duration: 30s;
+        }
+      }
+      
       @keyframes marquee {
         0% {
           transform: translateX(0);
         }
         100% {
-          transform: translateX(calc(-50% - 10px));
+          transform: translateX(calc(-50% - 12px));
         }
+      }
+      
+      .person {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      
+      .person-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #004285, #00a1b0);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 18px;
+      }
+      
+      .person h4 {
+        margin: 0 0 4px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      
+      .person p {
+        margin: 0;
+        font-size: 14px;
+        color: #666;
+      }
+      
+      blockquote {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #333;
+        font-style: italic;
       }
     </style>
 
     <div class="testimonial-carousel">
       <div class="testimonial-track" id="testimonialTrack">
-      <div class="testimonial-card">
-        <blockquote>
-          "Quy trình đặt lịch nhanh chóng, không gian sạch sẽ. Bác sĩ tư vấn rất
-          kỹ, giải thích cặn kẽ nguyên nhân bệnh và luôn theo sát trong quá
-          trình điều trị. Tôi hoàn toàn an tâm."
-        </blockquote>
-        <div class="person">
-          <div class="person-avatar">H</div>
-          <div>
-            <h4>Nguyễn Thu Hà</h4>
-            <p>Bệnh nhân Khoa Nội</p>
+
+        <div class="testimonial-card">
+          <blockquote>
+            "Quy trình đặt lịch nhanh chóng, không gian sạch sẽ. Bác sĩ tư vấn rất
+            kỹ, giải thích cặn kẽ nguyên nhân bệnh và luôn theo sát trong quá
+            trình điều trị. Tôi hoàn toàn an tâm."
+          </blockquote>
+          <div class="person">
+            <div class="person-avatar">H</div>
+            <div>
+              <h4>Nguyễn Thu Hà</h4>
+              <p>Bệnh nhân Khoa Nội</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <blockquote>
-          "Tôi ấn tượng nhất với hệ thống trang thiết bị hiện đại tại đây. Đội
-          ngũ điều dưỡng hỗ trợ tận tình từ cửa vào cho đến lúc nhận thuốc, cảm
-          giác như đang khám ở nước ngoài."
-        </blockquote>
-        <div class="person">
-          <div class="person-avatar">V</div>
-          <div>
-            <h4>Phạm Quang Vinh</h4>
-            <p>Bệnh nhân Chấn thương chỉnh hình</p>
+        
+        <div class="testimonial-card">
+          <blockquote>
+            "Tôi ấn tượng nhất với hệ thống trang thiết bị hiện đại tại đây. Đội
+            ngũ điều dưỡng hỗ trợ tận tình từ cửa vào cho đến lúc nhận thuốc, cảm
+            giác như đang khám ở nước ngoài."
+          </blockquote>
+          <div class="person">
+            <div class="person-avatar">V</div>
+            <div>
+              <h4>Phạm Quang Vinh</h4>
+              <p>Bệnh nhân Chấn thương chỉnh hình</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <blockquote>
-          "Dịch vụ cực kỳ đúng giờ, không phải chờ đợi mệt mỏi. Bác sĩ nhi khoa
-          vô cùng tâm lý, bé nhà tôi thường rất sợ đến bệnh viện nhưng lần này
-          lại hợp tác vui vẻ."
-        </blockquote>
-        <div class="person">
-          <div class="person-avatar">D</div>
-          <div>
-            <h4>Lê Mỹ Duyên</h4>
-            <p>Người nhà bệnh nhi</p>
+        
+        <div class="testimonial-card">
+          <blockquote>
+            "Dịch vụ cực kỳ đúng giờ, không phải chờ đợi mệt mỏi. Bác sĩ nhi khoa
+            vô cùng tâm lý, bé nhà tôi thường rất sợ đến bệnh viện nhưng lần này
+            lại hợp tác vui vẻ."
+          </blockquote>
+          <div class="person">
+            <div class="person-avatar">D</div>
+            <div>
+              <h4>Lê Mỹ Duyên</h4>
+              <p>Người nhà bệnh nhi</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <blockquote>
-          "Tôi rất hài lòng với chế độ chăm sóc hậu phẫu tại đây. Các y bác sĩ thăm
-          khám thường xuyên, phòng bệnh tiện nghi như khách sạn. Cảm giác phục hồi
-          nhanh chóng hơn hẳn."
-        </blockquote>
-        <div class="person">
-          <div class="person-avatar">T</div>
-          <div>
-            <h4>Trần Hoàng Minh</h4>
-            <p>Bệnh nhân Khoa Ngoại</p>
+        
+        <div class="testimonial-card">
+          <blockquote>
+            "Tôi rất hài lòng với chế độ chăm sóc hậu phẫu tại đây. Các y bác sĩ thăm
+            khám thường xuyên, phòng bệnh tiện nghi như khách sạn. Cảm giác phục hồi
+            nhanh chóng hơn hẳn."
+          </blockquote>
+          <div class="person">
+            <div class="person-avatar">T</div>
+            <div>
+              <h4>Trần Hoàng Minh</h4>
+              <p>Bệnh nhân Khoa Ngoại</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <blockquote>
-          "Khám tổng quát ở CMEC rất chuyên nghiệp và nhanh. Các bước được sắp xếp
-          khoa học, đặc biệt kết quả được giải thích trên mô hình 3D giúp tôi hiểu
-          rõ tình trạng sức khỏe của mình."
-        </blockquote>
-        <div class="person">
-          <div class="person-avatar">L</div>
-          <div>
-            <h4>Nguyễn Thị Lan</h4>
-            <p>Khám sức khỏe định kỳ</p>
+        
+        <div class="testimonial-card">
+          <blockquote>
+            "Khám tổng quát ở CMEC rất chuyên nghiệp và nhanh. Các bước được sắp xếp
+            khoa học, đặc biệt kết quả được giải thích trên mô hình 3D giúp tôi hiểu
+            rõ tình trạng sức khỏe của mình."
+          </blockquote>
+          <div class="person">
+            <div class="person-avatar">L</div>
+            <div>
+              <h4>Nguyễn Thị Lan</h4>
+              <p>Khám sức khỏe định kỳ</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <blockquote>
-          "Lần đầu tiên đi khám mà cảm thấy thư giãn như đi nghỉ dưỡng. Vị trí
-          thuận tiện, không gian trong lành, bác sĩ tận tình. Đánh giá 5 sao cho
-          chất lượng dịch vụ hoàn hảo!"
-        </blockquote>
-        <div class="person">
-          <div class="person-avatar">C</div>
-          <div>
-            <h4>Lê Văn Cường</h4>
-            <p>Bệnh nhân Khoa Tim mạch</p>
+        
+        <div class="testimonial-card">
+          <blockquote>
+            "Lần đầu tiên đi khám mà cảm thấy thư giãn như đi nghỉ dưỡng. Vị trí
+            thuận tiện, không gian trong lành, bác sĩ tận tình. Đánh giá 5 sao cho
+            chất lượng dịch vụ hoàn hảo!"
+          </blockquote>
+          <div class="person">
+            <div class="person-avatar">C</div>
+            <div>
+              <h4>Lê Văn Cường</h4>
+              <p>Bệnh nhân Khoa Tim mạch</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> 
 </section>
