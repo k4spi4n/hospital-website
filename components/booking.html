@@ -35,59 +35,131 @@
         </ul>
       </div>
 
-      <form class="booking-form" action="#" method="post">
-        <h4 style="font-size: 1.5rem; margin-bottom: 20px">
-          Thông tin lịch hẹn
-        </h4>
-        <div class="form-group-row">
-          <label>
-            Họ và tên *
-            <input
-              type="text"
-              name="name"
-              placeholder="Ví dụ: Nguyễn Văn A"
-              required
-            />
-          </label>
-          <label>
-            Số điện thoại *
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Nhập SĐT của bạn"
-              required
-            />
-          </label>
+      <form
+        class="booking-form"
+        action="#"
+        method="post"
+        id="bookingForm"
+        novalidate
+      >
+        <div class="booking-form-head">
+          <h4>Thông tin lịch hẹn</h4>
+          <p>Điền lần lượt theo từng bước để hoàn tất yêu cầu đặt khám.</p>
         </div>
-        <div class="form-group-row">
+
+        <div class="booking-steps" aria-label="Tiến trình đặt lịch">
+          <div class="booking-step-indicator is-active" data-step-indicator="1">
+            <span>1</span>
+            <small>Thông tin cá nhân</small>
+          </div>
+          <div class="booking-step-indicator" data-step-indicator="2">
+            <span>2</span>
+            <small>Lịch hẹn</small>
+          </div>
+          <div class="booking-step-indicator" data-step-indicator="3">
+            <span>3</span>
+            <small>Xác nhận</small>
+          </div>
+        </div>
+
+        <div class="booking-step-panel is-active" data-step="1">
+          <div class="form-group-row">
+            <label>
+              Họ và tên *
+              <input
+                type="text"
+                name="name"
+                placeholder="Ví dụ: Nguyễn Văn A"
+                required
+                autocomplete="name"
+              />
+            </label>
+            <label>
+              Số điện thoại *
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Nhập SĐT của bạn"
+                required
+                autocomplete="tel"
+              />
+            </label>
+          </div>
+        </div>
+
+        <div class="booking-step-panel" data-step="2" hidden>
+          <div class="form-group-row">
+            <label>
+              Ngày đến khám *
+              <input type="date" name="date" required />
+            </label>
+            <label>
+              Khung giờ mong muốn *
+              <select name="time-slot" required>
+                <option value="">Chọn khung giờ</option>
+                <option value="07:30-09:00">07:30 - 09:00</option>
+                <option value="09:00-10:30">09:00 - 10:30</option>
+                <option value="13:30-15:00">13:30 - 15:00</option>
+                <option value="15:00-16:30">15:00 - 16:30</option>
+              </select>
+            </label>
+          </div>
           <label>
-            Ngày đến khám *
-            <input type="date" name="date" required />
-          </label>
-          <label>
-            Khung giờ mong muốn *
-            <select name="time-slot" required>
-              <option value="">Chọn khung giờ</option>
-              <option value="07:30-09:00">07:30 - 09:00</option>
-              <option value="09:00-10:30">09:00 - 10:30</option>
-              <option value="13:30-15:00">13:30 - 15:00</option>
-              <option value="15:00-16:30">15:00 - 16:30</option>
+            Chuyên khoa cần khám
+            <select name="specialty">
+              <option value="">-- Lựa chọn chuyên khoa --</option>
+              <option value="timmach">Tim mạch</option>
+              <option value="thankinh">Thần kinh - Đột quỵ</option>
+              <option value="noitongquat">Nội tổng quát</option>
+              <option value="ngoai">Ngoại khoa</option>
             </select>
           </label>
         </div>
-        <label>
-          Chuyên khoa cần khám
-          <select name="specialty">
-            <option value="">-- Lựa chọn chuyên khoa --</option>
-            <option value="timmach">Tim mạch</option>
-            <option value="thankinh">Thần kinh - Đột quỵ</option>
-            <option value="noitongquat">Nội tổng quát</option>
-            <option value="ngoai">Ngoại khoa</option>
-          </select>
-        </label>
-        <button class="btn btn-primary btn-lg" type="submit">
-          Xác nhận Đặt lịch
-        </button>
+
+        <div class="booking-step-panel" data-step="3" hidden>
+          <label>
+            Ghi chú thêm cho bác sĩ
+            <textarea
+              name="note"
+              rows="4"
+              placeholder="Mô tả ngắn tình trạng hoặc yêu cầu của bạn (không bắt buộc)"
+            ></textarea>
+          </label>
+          <label class="consent-check">
+            <input type="checkbox" name="consent" required />
+            <span>Tôi đồng ý để bệnh viện liên hệ xác nhận lịch hẹn.</span>
+          </label>
+          <p class="booking-hint">
+            Hệ thống đang tự động lưu tạm dữ liệu trên trình duyệt này.
+          </p>
+        </div>
+
+        <div class="booking-actions">
+          <button
+            class="btn btn-outline"
+            type="button"
+            data-action="prev"
+            disabled
+          >
+            Quay lại
+          </button>
+          <button class="btn btn-outline" type="button" data-action="clear">
+            Xóa dữ liệu tạm
+          </button>
+          <button class="btn btn-primary" type="button" data-action="next">
+            Tiếp tục
+          </button>
+          <button
+            class="btn btn-primary btn-lg"
+            type="submit"
+            data-action="submit"
+            hidden
+          >
+            Xác nhận Đặt lịch
+          </button>
+        </div>
+
+        <p class="booking-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
