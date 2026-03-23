@@ -60,6 +60,7 @@ function initBookingForm() {
   );
   const totalSteps = panels.length;
   let currentStep = 1;
+  let canClearDraftOnFirstStep = false;
   const nextLabel = "Tiếp tục";
   const confirmLabel = "Xác nhận";
 
@@ -161,7 +162,8 @@ function initBookingForm() {
     });
 
     if (prevButton) {
-      prevButton.disabled = currentStep === 1;
+      prevButton.disabled =
+        currentStep === 1 ? !canClearDraftOnFirstStep : false;
     }
 
     if (nextButton) {
@@ -212,6 +214,7 @@ function initBookingForm() {
 
   function completeBooking() {
     localStorage.removeItem(storageKey);
+    canClearDraftOnFirstStep = false;
     setStatus(
       "Gui yeu cau dat lich thanh cong. CSKH se lien he som nhat.",
       "success",
@@ -219,6 +222,15 @@ function initBookingForm() {
     form.reset();
     currentStep = 1;
     updateSteps();
+  }
+
+  function clearDraftFromFirstStep() {
+    localStorage.removeItem(storageKey);
+    form.reset();
+    currentStep = 1;
+    canClearDraftOnFirstStep = false;
+    updateSteps();
+    setStatus("");
   }
 
   fields.forEach((field) => {
@@ -238,19 +250,28 @@ function initBookingForm() {
       }
 
       if (currentStep < totalSteps) {
+        canClearDraftOnFirstStep = false;
         goToStep(currentStep + 1);
+        setStatus("");
       } else {
         completeBooking();
       }
-
-      setStatus("");
     });
   }
 
   if (prevButton) {
     prevButton.addEventListener("click", () => {
-      goToStep(currentStep - 1);
-      setStatus("");
+      if (currentStep > 1) {
+        goToStep(currentStep - 1);
+        canClearDraftOnFirstStep = currentStep === 1;
+        updateSteps();
+        setStatus("");
+        return;
+      }
+
+      if (canClearDraftOnFirstStep) {
+        clearDraftFromFirstStep();
+      }
     });
   }
 
