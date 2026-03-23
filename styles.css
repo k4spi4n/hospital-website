@@ -699,7 +699,9 @@ h4 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 .news-card a:hover {
   color: var(--accent);
@@ -854,7 +856,9 @@ h4 {
   border-radius: 10px;
   color: var(--text);
   text-decoration: none;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 .related-list a strong {
   font-family: var(--font-heading);
