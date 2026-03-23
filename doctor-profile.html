@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hồ sơ bác sĩ | CMEC Hospital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="doctor-page">
+    <header class="blog-topbar">
+      <div class="container blog-topbar-inner">
+        <a class="logo" href="./index.html#top" aria-label="CMEC Hospital">
+          <span class="logo-mark" aria-hidden="true">+</span>
+          <span>CMEC Doctors</span>
+        </a>
+        <a class="btn btn-outline" href="./index.html#doctors"
+          >Quay lại Đội ngũ bác sĩ</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <section class="doctor-hero section">
+        <div class="container doctor-hero-grid">
+          <div class="doctor-avatar-card">
+            <img
+              id="doctorAvatar"
+              class="doctor-avatar"
+              src=""
+              alt=""
+              loading="lazy"
+            />
+          </div>
+          <div class="doctor-hero-content">
+            <p class="blog-hero-kicker">Hồ sơ chuyên gia</p>
+            <h1 id="doctorName">Bác sĩ CMEC</h1>
+            <p id="doctorTitle" class="doctor-title"></p>
+            <p id="doctorIntroLead" class="doctor-intro-lead"></p>
+            <div class="doctor-hero-actions">
+              <a class="btn btn-primary" href="./index.html#booking"
+                >Đặt lịch với bác sĩ</a
+              >
+              <a class="btn btn-outline" href="./index.html#services"
+                >Xem chuyên khoa</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section doctor-profile-section">
+        <div class="container doctor-profile-grid">
+          <article class="doctor-profile-main">
+            <section class="doctor-panel">
+              <h2>Giới thiệu</h2>
+              <p id="doctorOverview"></p>
+            </section>
+
+            <section class="doctor-panel">
+              <h2>Quá trình đào tạo - Công tác</h2>
+              <ul id="doctorTimeline" class="doctor-timeline"></ul>
+            </section>
+
+            <section class="doctor-panel">
+              <h2>Thế mạnh</h2>
+              <ul id="doctorStrengths" class="doctor-strengths"></ul>
+            </section>
+
+            <section class="doctor-panel">
+              <h2>Kinh nghiệm làm việc</h2>
+              <p id="doctorExperience"></p>
+            </section>
+          </article>
+
+          <aside class="doctor-profile-side" aria-label="Thông tin nhanh">
+            <div class="doctor-widget">
+              <h3>Thông tin nhanh</h3>
+              <dl class="doctor-facts">
+                <div>
+                  <dt>Chuyên khoa</dt>
+                  <dd id="doctorDepartment"></dd>
+                </div>
+                <div>
+                  <dt>Học hàm - học vị</dt>
+                  <dd id="doctorDegree"></dd>
+                </div>
+                <div>
+                  <dt>Kinh nghiệm</dt>
+                  <dd id="doctorYears"></dd>
+                </div>
+                <div>
+                  <dt>Lịch tư vấn</dt>
+                  <dd id="doctorSchedule"></dd>
+                </div>
+              </dl>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script src="./scripts/doctor-profile.js" defer></script>
+  </body>
+</html>

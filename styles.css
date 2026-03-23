@@ -421,6 +421,9 @@ h4 {
 .doctor-card:hover {
   transform: translateY(-5px);
 }
+.doctor-profile-link {
+  display: block;
+}
 .doctor-img-wrap {
   width: 100%;
   aspect-ratio: 4/3;
@@ -433,6 +436,10 @@ h4 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.doctor-card:hover img {
+  transform: scale(1.04);
 }
 .doctor-info {
   padding: 24px;
@@ -445,11 +452,145 @@ h4 {
   font-size: 1.2rem;
   margin-bottom: 4px;
 }
+.doctor-name-link {
+  color: var(--brand-strong);
+  text-decoration: none;
+}
+.doctor-name-link:hover {
+  color: var(--accent);
+}
 .doctor-info p {
   color: var(--accent);
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 16px;
+}
+.doctor-actions {
+  display: flex;
+  justify-content: center;
+}
+.doctor-actions .btn {
+  width: min(180px, 100%);
+  padding: 0.65rem 0.75rem;
+}
+
+/* Doctor Profile Page */
+.doctor-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 460px at 5% -10%, #dbeafe 0%, transparent 60%),
+    radial-gradient(900px 420px at 95% 0%, #ecfeff 0%, transparent 58%),
+    var(--bg);
+}
+.doctor-hero {
+  padding-bottom: 36px;
+}
+.doctor-hero-grid {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+.doctor-avatar-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--surface);
+}
+.doctor-avatar {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+}
+.doctor-hero-content h1 {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  margin-bottom: 10px;
+}
+.doctor-title {
+  color: #0e7490;
+  font-size: 1.06rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.doctor-intro-lead {
+  color: #334155;
+  font-size: 1.05rem;
+  max-width: 760px;
+}
+.doctor-hero-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.doctor-profile-section {
+  padding-top: 8px;
+}
+.doctor-profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.doctor-profile-main {
+  display: grid;
+  gap: 18px;
+}
+.doctor-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: var(--shadow-sm);
+}
+.doctor-panel h2 {
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+.doctor-panel p {
+  color: #334155;
+}
+.doctor-timeline,
+.doctor-strengths {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 9px;
+  color: #334155;
+}
+.doctor-profile-side {
+  position: sticky;
+  top: 96px;
+}
+.doctor-widget {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+}
+.doctor-widget h3 {
+  font-size: 1.12rem;
+  margin-bottom: 12px;
+}
+.doctor-facts {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+.doctor-facts dt {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.doctor-facts dd {
+  margin: 3px 0 0;
+  color: #0f172a;
+  font-weight: 600;
 }
 
 /* Booking Section */
@@ -1066,6 +1207,15 @@ h4 {
   .grid.cards-3 {
     grid-template-columns: repeat(2, 1fr);
   }
+  .doctor-profile-grid {
+    grid-template-columns: 1fr;
+  }
+  .doctor-profile-side {
+    position: static;
+  }
+  .doctor-hero-grid {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
   .intro-grid {
     grid-template-columns: 1fr;
   }
@@ -1113,6 +1263,14 @@ h4 {
   .grid.cards-3,
   .grid.cards-4 {
     grid-template-columns: 1fr;
+  }
+  .doctor-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .doctor-avatar-card {
+    max-width: 330px;
+    margin: 0 auto;
   }
   .form-group-row {
     grid-template-columns: 1fr;
