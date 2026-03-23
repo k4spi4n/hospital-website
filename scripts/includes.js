@@ -54,14 +54,14 @@ function initBookingForm() {
   const indicators = Array.from(form.querySelectorAll("[data-step-indicator]"));
   const prevButton = form.querySelector('[data-action="prev"]');
   const nextButton = form.querySelector('[data-action="next"]');
-  const clearButton = form.querySelector('[data-action="clear"]');
-  const submitButton = form.querySelector('[data-action="submit"]');
   const statusElement = form.querySelector(".booking-status");
   const fields = Array.from(
     form.querySelectorAll("input[name], select[name], textarea[name]"),
   );
   const totalSteps = panels.length;
   let currentStep = 1;
+  const nextLabel = "Tiếp tục";
+  const confirmLabel = "Xác nhận";
 
   function setStatus(message, type) {
     if (!statusElement) {
@@ -165,11 +165,8 @@ function initBookingForm() {
     }
 
     if (nextButton) {
-      nextButton.hidden = currentStep === totalSteps;
-    }
-
-    if (submitButton) {
-      submitButton.hidden = currentStep !== totalSteps;
+      nextButton.textContent =
+        currentStep === totalSteps ? confirmLabel : nextLabel;
     }
   }
 
@@ -213,12 +210,15 @@ function initBookingForm() {
     }
   }
 
-  function clearDraftAndReset() {
+  function completeBooking() {
     localStorage.removeItem(storageKey);
+    setStatus(
+      "Gui yeu cau dat lich thanh cong. CSKH se lien he som nhat.",
+      "success",
+    );
     form.reset();
     currentStep = 1;
     updateSteps();
-    setStatus("Da xoa du lieu tam.", "success");
   }
 
   fields.forEach((field) => {
@@ -237,7 +237,12 @@ function initBookingForm() {
         return;
       }
 
-      goToStep(currentStep + 1);
+      if (currentStep < totalSteps) {
+        goToStep(currentStep + 1);
+      } else {
+        completeBooking();
+      }
+
       setStatus("");
     });
   }
@@ -249,10 +254,6 @@ function initBookingForm() {
     });
   }
 
-  if (clearButton) {
-    clearButton.addEventListener("click", clearDraftAndReset);
-  }
-
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -260,14 +261,13 @@ function initBookingForm() {
       return;
     }
 
-    localStorage.removeItem(storageKey);
-    setStatus(
-      "Gui yeu cau dat lich thanh cong. CSKH se lien he som nhat.",
-      "success",
-    );
-    form.reset();
-    currentStep = 1;
-    updateSteps();
+    if (currentStep < totalSteps) {
+      goToStep(currentStep + 1);
+      setStatus("");
+      return;
+    }
+
+    completeBooking();
   });
 
   restoreDraft();
